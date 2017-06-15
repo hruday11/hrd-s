@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Nexagile</title>
+	<link rel="shortcut icon" href="logos.png" /><title>Nexagile</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="home.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <script src="https://use.fontawesome.com/eb10996e9d.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.js"></script>
+</head>
+<body ng-controller = "myController">
+<nav class="navbar navbar-default logo">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Nexagile</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i>  Home <span class="sr-only">(current)</span></a></li>
+        <li><a href="http://nexagile.com/about-us/"><i class="fa fa-info-circle" aria-hidden="true"></i>  About Us</a></li>
+        <li><a href="http://nexagile.com/services/">Services</a></li>
+        <li><a href="http://nexagile.com/careers/">Carrers</a></li>
+        <li><a href="http://nexagile.com/contact-us/"><i class="fa fa-phone" aria-hidden="true"></i> Contact Us</a></li>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href ng-click="update()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Update Profile</a></li>
+        <li><a href ng-click="view()"><i class="fa fa-eye" aria-hidden="true"></i> View Profile</a></li>
+        <li><a href="index.html"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<table>
+  <tr>
+    <td id="here"></td>
+  </tr>
+</table>
+<div class="container box" ng-show="myShow">
+	<label>First Name: {{str.firstname}}</label><br />
+	<label>Last Name: {{str.lastname}}</label><br />
+	<label>Email: {{str.emailid}}</label><br />
+	<label>Address: {{str.address}}</label><br />
+	<label>Phone Number: {{str.phoneno}}</label>
+</div>
+
+<div class="home" ng-show="myUpdate">
+<form >
+  <div class="form-group">
+
+    <label for="firstname">First Name</label>
+    <input type="text" class="form-control" id="firstname"  ng-model="app.firstname" value={{str.firstname}} >
+    <label for="lastname">Last Name</label>
+    <input type="text" class="form-control" id="lastname" ng-model="app.lastname" placeholder={{str.lastname}} >
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" ng-model="app.address" placeholder={{str.address}}>
+    <label for="phone">Phone Number</label>
+    <input type="text" class="form-control" id="phoneno" ng-model="app.phoneno" placeholder={{str.phoneno}}>
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" ng-model="app.password" placeholder={{str.password}}>
+    <!-- <input type="file" name="file" ng-model="app.image"> -->
+  </div>
+  <button class="btn btn-info button" ng-click="updateUser()">Update</button>
+ </form>
+ </div>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+window.onload = function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+         console.log(tmp[1]);
+           var str =
+'<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mak="http://xmlns.oracle.com/SoaDemo/'+
+'sayHello/makeGreeting">'+
+   '<soapenv:Header/>'+
+   '<soapenv:Body>'+
+      '<mak:process>'+
+         '<mak:input>'+'   '+tmp[1]+
+         '</mak:input>'+ 
+      '</mak:process>'+
+   '</soapenv:Body>'+
+'</soapenv:Envelope>';
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    xhr = null;
+  }
+  return xhr;
+}
+var xhr = createCORSRequest('POST', "http://192.168.0.17:7003/soa-infra/services/default/sayHello/makegreeting_client_ep?WSDL");
+if (!xhr) {
+  throw new Error('CORS not supported');
+}
+xhr.onload = function(){
+  var results = xhr.responseText;
+  console.log(results);
+   var x2js = new X2JS();
+    var aftCnv = x2js.xml_str2json(results);
+         console.log(aftCnv.Envelope.Body.processResponse.result);
+         var disp = aftCnv.Envelope.Body.processResponse.result; 
+         // $scope.disp = aftCnv.Envelope.Body.processResponse.result;
+         document.getElementById('here').innerHTML = disp;
+}
+xhr.setRequestHeader('Content-Type', 'text/xml');
+xhr.send(str);
+    }
+    document.getElementById('here').innerHTML = data.firstname;
+    console.log(data.firstname);
+}
+	var myApp = angular.module('myApp',[]);
+	myApp.controller('myController',['$scope','$http',function($scope,$http){ 
+
+    $scope.myShow = false;
+		$scope.view = function(){
+      $scope.myShow = true;
+		 $http.get('http://192.168.0.4:8888/useraccount/login/selectuser').success(function(msg){
+        $scope.str = msg;
+			});
+		};
+    $scope.myUpdate = false;
+    $scope.update = function(){
+     $scope.myUpdate = true;
+     $http.get('http://192.168.0.4:8888/useraccount/login/selectuser').success(function(msg){
+        $scope.str = msg;
+        console.log(str.firstname);
+      });
+    }
+    $scope.updateUser = function(){
+      $http.put('http://192.168.0.4:8888/useraccount/edit/doedit',$scope.app).success(function(msg){
+        if(msg.msg == "UpdateSuccessful"){
+          alert("your details are updated succesfully");
+       }else{
+        alert("error while updating please check all fields");
+       }
+      })
+    }
+
+	}]);
+</script>
+</body>
+</html>

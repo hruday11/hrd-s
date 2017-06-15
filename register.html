@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="register.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+ <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <link rel="shortcut icon" href="logos.png" /><title>Nexagile</title>
+</head>
+<body>
+<div class="container" ng-controller="MyController">
+
+<form name ="form" class =" css-form" novalidate>
+
+  <div class="form-group bt">
+       <h1>Nexagile Hrd</h1><hr />
+    <label for="firstname">First Name
+    <input type="text" class="form-control" id="firstname" ng-model="app.firstname" placeholder=" First Name">
+    </label><br>
+    <div ng-show="form.$submitted || form.firstname.$touched">
+      <div ng-show="form.firstname.$error.required">Tell us your name.</div>
+    </div>
+    <label for="lastname">Last Name</label>
+    <input type="text" class="form-control" id="lastname" ng-model="app.lastname" placeholder="Last Name">
+
+    <label for="emailid">Email Id:
+    <input type="text" class="form-control" id="emailid" ng-model="app.emailid" placeholder="Enter Email">
+    </label>
+
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" ng-model="app.address" placeholder="Enter address">
+     <label for="phone">Phone Number</label>
+    <input type="text" class="form-control" id="phone" ng-model="app.phoneno" placeholder="Enter phoneno">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" ng-model="app.password" placeholder="Enter password">
+    <input type="file" name="file" ng-model="app.image">
+
+   <button class="btn btn-info button" ng-click="register()">Sign Up</button>
+  </div>
+ 
+ </form>
+</div>
+<script type="text/javascript">
+    var myApp = angular.module('myApp',[]);
+    myApp.controller('MyController',['$scope','$http',function($scope,$http){
+    $scope.register = function(){
+        console.log($scope.app);
+        $http.post('http://192.168.0.4:8085/useraccount/register/doregister',$scope.app).success(function(msg){
+          alert(msg.msg)
+          console.log(msg.msg);
+            
+        });
+    };
+    }]);
+    
+</script>
+</body>
+</html>

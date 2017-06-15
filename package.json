@@ -1,0 +1,22 @@
+{
+  "name": "nexagile",
+  "version": "1.0.0",
+  "description": "registration and login form with rest service",
+  "main": "home.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "register",
+    "login",
+    "form",
+    "validation",
+    "rest",
+    "service..."
+  ],
+  "author": "hruday",
+  "license": "ISC",
+  "dependencies": {
+    "angular-auto-validate": "^1.19.0"
+  }
+}

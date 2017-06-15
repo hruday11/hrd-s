@@ -1,0 +1,44 @@
+*{
+	font-family: 'Open Sans', sans-serif;
+}
+.nexa{
+	margin: 0px auto;
+	width: 400px;
+}
+.button{
+	margin-top: 10px;
+	margin-left: 150px;
+}
+h1{
+	margin-top: 100px;
+	margin-left: 110px;
+}
+.button1{
+	margin-top: 10px;
+	margin-left: 20px;
+}
+html,body{ 
+  background: url(bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.logo{
+	margin:40px;
+}
+.box{
+	color:white;
+	font-size: 20px;
+	margin: 0px auto;
+	text-align: center;
+}
+.home{
+     margin: 0px auto;
+     width:400px;
+}
+#here{
+	font-size: 50px;
+	color:white;
+	margin-left: 200px;
+}

@@ -1,0 +1,38 @@
+*{
+  
+  font-family: 'Open Sans', sans-serif;
+}
+.nexa{
+  margin: 0px auto;
+  width:400px;
+}
+h1{
+  margin-left:20px; 
+}
+.button{
+  margin-left: 150px;
+}
+.logo{
+  margin:40px;
+}
+.navbar-default {
+    background-color: #F8F8F8;
+    border-color: #E7E7E7;
+}
+html,body{ 
+  background: url(bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.box{
+	color:white;
+	font-size: 20px;
+	margin: 0px auto;
+	text-align: center;
+}
+.home{
+     margin: 0px auto;
+     width:400px;
+}
