@@ -1,0 +1,8 @@
+{
+  "posts": [
+    { "id": 1, "firstName": "json-server", "lastName": "typicode" ,"address" : "Hyderabad" , "phoneNo":"8686658542" },
+     { "id": 2, "firstName": "json-server", "lastName": "typicode" ,"address" : "Hyderabad" , "phoneNo":"8686658542" },
+      { "id": 3, "firstName": "json-server", "lastName": "typicode" ,"address" : "Hyderabad" , "phoneNo":"8686658542" },
+       { "id": 4, "firstName": "json-server", "lastName": "typicode" ,"address" : "Hyderabad" , "phoneNo":"8686658542" }
+  ]
+}
